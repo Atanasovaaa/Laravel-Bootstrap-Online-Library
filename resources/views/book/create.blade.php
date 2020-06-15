@@ -52,7 +52,7 @@
                         <select multiple="multiple" name="genres[]" id="genres">
                             @foreach($genres as $key => $genre)
 
-                            <option value="{{$key}}">{{$genre->name}}</option>
+                            <option value="{{$key+1}}">{{$genre->name}}</option>
 
                             @endforeach
                         </select>
