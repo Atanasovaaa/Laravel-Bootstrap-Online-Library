@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,8 @@ Route::get('/', 'BookController@index')->middleware('auth');
 
 Route::resources([
     'books' => 'BookController',
-    'authors' => 'AuthorController'
+    'authors' => 'AuthorController',
+    'genres' => 'GenreController'
 ]);
 
 

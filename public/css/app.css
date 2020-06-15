@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
@@ -10931,5 +10931,99 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+h1,
+h2,
+h3,
+a {
+  font-family: "Libre Baskerville", serif;
+}
+
+p {
+  font-family: "Arial, Helvetica", sans-serif;
+}
+
+.navbar-brand {
+  font-family: "Libre Baskerville", serif;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.author-img img {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 768px) {
+  .author-img img {
+    text-align: center;
+    width: auto;
+  }
+}
+
+@media (min-width: 1400px) {
+  .author-img img {
+    text-align: center;
+    width: auto;
+  }
+}
+
+.jumbotron {
+  background-image: url("/images/light-hands-woman-books-34084.jpg");
+  background-size: cover;
+  color: #ffffff;
+  min-height: 500px;
+  position: relative;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.jumbotron .container {
+  padding-top: 80px;
+}
+
+.jumbotron .container h2 {
+  font-size: 2.8rem;
+}
+
+.jumbotron .container p {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .jumbotron .container {
+    padding-top: 70px;
+  }
+
+  .jumbotron .container h2 {
+    font-size: 2.38rem;
+  }
+
+  .jumbotron .container p {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767.98px) {
+  .jumbotron .container {
+    padding-top: 60px;
+  }
+
+  .jumbotron .container h2 {
+    font-size: 2rem;
+  }
+
+  .jumbotron .container p {
+    font-size: 1rem;
+  }
+}
+
+.jumbotron hr {
+  background-color: #61ce70;
+  border-width: 2px;
 }
 
