@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'BookController@index')->middleware('auth');
+Route::get('/', 'HomeController@index')->middleware('auth');
 
 Route::resources([
     'books' => 'BookController',

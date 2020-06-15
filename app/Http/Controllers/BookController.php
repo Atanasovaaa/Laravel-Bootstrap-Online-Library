@@ -32,7 +32,7 @@ class BookController extends Controller
 
         // $books = Book::all()->random(10);
         // dd($books);
-        return view('blog', compact('books'));
+        return view('book.show', compact('books'));
         // return view('blog', [
         //     'zelenchuk' => $books
         // ]);

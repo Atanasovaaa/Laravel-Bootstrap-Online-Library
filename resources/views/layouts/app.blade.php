@@ -48,11 +48,11 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Books</a>
+                            <a class="nav-link" href="{{ route('books.index')}}">Books</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Favourite Books</a>
