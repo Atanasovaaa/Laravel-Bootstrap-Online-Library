@@ -11,6 +11,10 @@
 @endif
 
 <div class="container">
+    <div class="row pb-4 pl-3">
+        <a href="/books/create">
+            <button type="button" class="btn btn-success">Create New Book <i class="fa fa-plus" aria-hidden="true"></i></button></a>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -22,7 +26,6 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach($books as $book)
             <tr>
                 <td scope="row">
@@ -36,13 +39,13 @@
                     <a href="{{ route('genres.show', ['genre'=> $book->genre]) }}">{{$book->genre->name}}</a>
                 </td>
                 <td class="btn-actions">
-                    <i aria-data="{{$book->id}}" class="fa fa-pencil"></i>
-                    {{-- <button type="button" class="btn btn-success"><i aria-data="{{$book->id}}" class="fa fa-pencil"></i></button> --}}
-                    <i aria-data="{{$book->id}}" class="fa fa-trash"></i>
-                    {{-- <button type="button" class="btn btn-danger"><i aria-data="{{$book->id}}" class="fa fa-trash"></i></button> --}}
+                    <a href="{{route('books.edit', ['book' => $book])}}">
+                        <button type="button" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+                    {{-- <button type="button" class="btn btn-warning"><i aria-data="{{$book->id}}" class="fa fa-pencil"></i></button> --}}
+                    <button type="button" class="btn btn-danger"><i aria-data="{{$book->id}}" class="fa fa-trash"></i></button>
                 </td>
-            </tr>
 
+            </tr>
             @endforeach
 
         </tbody>
@@ -58,7 +61,7 @@
 <script>
     $(document).ready(function() {
 
-        $('.btn-actions i').click(function() {
+        $('.btn-danger i').click(function() {
 
 
             var payload = {
@@ -79,7 +82,28 @@
                     location.reload()
                 })
                 .then(function(data) {})
+        });
+        $('.btn-warning i').click(function() {
 
+
+            var payload = {
+                id: $(this).attr("aria-data")
+            };
+
+            var data = new FormData();
+            data.append("data", JSON.stringify(payload));
+            console.log(payload);
+            fetch('/books/' + $(this).attr("aria-data") + '/edit', {
+                    method: "GET"
+
+                    , headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+                .then(function(res) {
+                    location.reload()
+                })
+                .then(function(data) {})
         });
     });
 

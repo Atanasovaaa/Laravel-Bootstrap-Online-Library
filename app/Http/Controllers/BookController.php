@@ -18,7 +18,7 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin', ['only' => ['create', 'destroy']]);
+        $this->middleware('isAdmin', ['only' => ['create', 'destroy', 'edit']]);
     }
 
 
@@ -94,7 +94,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('book.edit',compact('books'));
     }
 
     /**
@@ -106,7 +106,17 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'author' => 'required',
+            'genre' => 'required'
+        ]);
+  
+        $book->update($request->all());
+  
+        return redirect()->back()
+                        ->with('success','Product updated successfully');
     }
 
     /**

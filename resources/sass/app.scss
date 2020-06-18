@@ -23,7 +23,7 @@ p {
 .navbar-brand {
     font-family: "Libre Baskerville", serif;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .author-img {
@@ -95,10 +95,6 @@ p {
     }
 }
 
-// .card-view {
-//     min-height: auto;
-// }
-
 .btn-fav {
     text-align: center;
     padding-top: 20px;
@@ -117,5 +113,17 @@ p {
     }
     .btn {
         margin-right: 5px;
+    }
+}
+
+.btn-create {
+    width: 100%;
+    background-color: #343a40;
+    border-color: #343a40;
+    color: #fff;
+
+    &:hover {
+        background-color: #28a745;
+        border-color: #28a745;
     }
 }
