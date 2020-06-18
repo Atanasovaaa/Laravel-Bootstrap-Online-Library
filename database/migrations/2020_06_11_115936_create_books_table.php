@@ -18,12 +18,24 @@ class CreateBooksTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('image_url')->nullable();
+            $table->boolean('isFavourite')->default(0)->nullable();
             $table->timestamps();
 
-            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')->onDelete('cascade');
+
+
+            $table->unsignedBigInteger('author_id')->nullable();
             $table->foreign('author_id')
                 ->references('id')
-                ->on('authors');
+                ->on('authors')->onDelete('cascade');
+
+            $table->unsignedBigInteger('genre_id')->nullable();
+            $table->foreign('genre_id')
+                ->references('id')
+                ->on('genres')->onDelete('cascade');
         });
     }
 

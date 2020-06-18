@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Book;
 use App\Genre;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 use function GuzzleHttp\Promise\all;
@@ -16,6 +18,7 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin', ['only' => ['create', 'destroy']]);
     }
 
 
@@ -28,14 +31,10 @@ class BookController extends Controller
 
     public function index()
     {
-        $books = Book::with('genres')->get();
+        $user = User::with('favs')->find(Auth::user()->id);
+        $books = Book::with('genre')->get();
 
-        // $books = Book::all()->random(10);
-        // dd($books);
-        return view('book.show', compact('books'));
-        // return view('blog', [
-        //     'zelenchuk' => $books
-        // ]);
+        return view('book.show', compact('books', 'user'));
     }
 
     /**
@@ -61,14 +60,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->input('genres'));
+        // dd($request->all());
+
         $book = new Book();
         $book->name = $request->input('name');
         $book->description = $request->input('description');
-        $book->author_id = 1;
+        $book->isFavourite = false;
+        $book->genre_id = $request->input('genre');
+        $book->author_id = $request->input('author');
         $book->save();
-        $book->genres()->attach($request->input('genres'));
-
 
         return redirect()->back()->with('success', 'The Book was create successfully!');
     }
@@ -117,6 +117,47 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $tempBook = Book::with('favs')->find($book->id);
+        $tempBook->favs()->detach();
+        $tempBook->delete();
+
+        return response('200');
+    }
+
+
+    public function favourites()
+    {
+        $user = User::with('favs')->find(Auth::user()->id);
+
+        $favBooks = $user->favs;
+
+
+        return view('book.favourites', [
+            'books' => $favBooks,
+            'user' => $user
+        ]);
+    }
+
+    public function toggleFavourites(Request $request)
+    {
+        if ($request->has('data')) {
+            $data = json_decode($request->input('data'));
+
+            $user = User::find(Auth::user()->id);
+            if (in_array($data->id, $user->favouriteBooks())) {
+                $user->favs()->detach($data->id);
+            } else {
+                $user->favs()->attach($data->id);
+            }
+
+            $user->save();
+
+            // $book = Book::find($data->id);
+            // $book->isFavourite = !$book->isFavourite;
+            // $book->save();
+
+            return response('200');
+        }
+        return response('404');
     }
 }

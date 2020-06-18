@@ -11027,3 +11027,25 @@ p {
   border-width: 2px;
 }
 
+.btn-fav {
+  text-align: center;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.btn-fav .fa-heart {
+  color: red;
+}
+
+.btn-actions {
+  display: inline-flex;
+}
+
+.btn-actions i {
+  cursor: pointer;
+}
+
+.btn-actions .btn {
+  margin-right: 5px;
+}
+

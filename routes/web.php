@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->middleware('auth');
+Route::get('/admin-dashboard', 'AdminController@index');
+Route::get('/favourites', 'BookController@favourites')->name('book.favourites')->middleware('auth');
+Route::post('/book/favouriteToggle', 'BookController@toggleFavourites')->name('book.toggleFavourites')->middleware('auth');
 
 Route::resources([
     'books' => 'BookController',
@@ -26,3 +29,9 @@ Route::resources([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// Route::group(['middleware' => 'is.admin'], function () {
+//     Route::get('/user/{data}', 'UserController@getData');
+//     Route::post('/user/{data}', 'UserController@postData');
+// });

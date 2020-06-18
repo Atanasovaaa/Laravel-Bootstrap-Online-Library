@@ -2,9 +2,6 @@
 
 @section('content')
 
-{{-- @dd($authors) --}}
-
-
 @if (\Session::has('success'))
 <div class="alert alert-success text-center">
     <ul class="list-group" style="list-style:none;">
@@ -49,21 +46,33 @@
                                 @enderror
                             </div>
                         </div>
-                        <select multiple="multiple" name="genres[]" id="genres">
-                            @foreach($genres as $key => $genre)
 
-                            <option value="{{$key+1}}">{{$genre->name}}</option>
 
-                            @endforeach
-                        </select>
+                        <div class="form-group row">
+                            <label for="Genre" class="col-md-4 col-form-label text-md-right">{{ __('Genre') }}</label>
+                            <div class="col-md-6">
+                                <select name="genre" id="genres">
+                                    @foreach($genres as $key => $genre)
 
-                        {{-- <select multiple="multiple" name="genres[]" id="genres">
-                            @foreach($genres as $key => $genre)
-                            @foreach($book->genres as $currentBookKey => $currentBook)
-                            <option value="{{$key}}" @if($key==$cuurentBookKey)selected="selected" @endif>{{$genre->name}}</option>
-                        @endforeach
-                        @endforeach
-                        </select> --}}
+                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Author" class="col-md-4 col-form-label text-md-right">{{ __('Author') }}</label>
+                            <div class="col-md-6">
+                                <select name="author" id="author">
+                                    @foreach($authors as $key => $author)
+
+                                    <option value="{{$author->id}}">{{$author->name}}</option>
+
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

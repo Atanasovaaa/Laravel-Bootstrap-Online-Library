@@ -10,6 +10,8 @@ $factory->define(Book::class, function (Faker $faker) {
         'name' => $faker->name(),
         'description' => $faker->realText($faker->numberBetween(50, 100)),
         'image_url' => $faker->imageUrl(150, 80),
-        'author_id' => $faker->randomDigitNotNull()
+        'author_id' => $faker->randomDigitNotNull(),
+        'genre_id' => rand(1, 8),
+        'user_id' =>  rand(1, 5)
     ];
 });

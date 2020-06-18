@@ -15,6 +15,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <!-- Styles -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
@@ -47,7 +49,13 @@
                         </li>
                         @endif
                         @else
-                        <li class="nav-item dropdown">
+
+                        @if(Auth::user()->isAdmin)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin-dashboard">Dashboard</a>
+                        </li>
+                        @endif
+
                         <li class="nav-item">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
@@ -55,26 +63,28 @@
                             <a class="nav-link" href="{{ route('books.index')}}">Books</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Favourite Books</a>
+                            <a class="nav-link" href="{{route('book.favourites')}}">Favourite Books</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Authors</a>
                         </li>
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
                         </li>
+
                         @endguest
                     </ul>
                 </div>
@@ -85,5 +95,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('extra-js')
 </body>
 </html>

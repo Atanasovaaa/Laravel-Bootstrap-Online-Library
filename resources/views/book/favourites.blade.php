@@ -4,7 +4,9 @@
 
 <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
+
         @foreach($books as $book)
+
         <div class="col mb-4">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters h-100">
@@ -14,7 +16,7 @@
                             <i aria-data="{{$book->id}}" class="fa fa-heart{{ in_array($book->id, $user->favouriteBooks()) ? '' : '-o'}} fa-2x"></i>
                         </div>
                     </div>
-                    <div class="col-md-8 d-block">
+                    <div class=" col-md-8 d-block">
                         <div class="card-body">
                             <h5 class="card-title">{{$book->name}}</h5>
                             <p class="card-text">{{$book->description}}</p>
@@ -26,11 +28,12 @@
                 </div>
             </div>
         </div>
+
         @endforeach
     </div>
 </div>
-@endsection
 
+@endsection
 
 @section('extra-js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -19,15 +19,4 @@ $factory->define(Genre::class, function (Faker $faker) {
             'Thirller'
         ])
     ];
-
-
-    // $names = [];
-    // $genres =  ['tr', 'br', 'sr'];
-    // foreach ($genres as $n) {
-    //     $names[] = [
-    //         'name' => $n
-    //     ];
-    // }
-    // dd($names);
-    // return $names;
 });

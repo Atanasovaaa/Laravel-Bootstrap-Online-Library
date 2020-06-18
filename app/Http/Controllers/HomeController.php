@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $books = Book::with('genres')->get();
+        $books = Book::with('genre')->get();
         return view('blog', compact('books'));
     }
 }

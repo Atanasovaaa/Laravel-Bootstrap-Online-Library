@@ -49689,7 +49689,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component("example-component", __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49697,8 +49697,45 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app'
+  el: "#app"
 });
+
+(function ($) {
+  var isFavourite = "<?php echo has_tag('favourites'); ?>";
+
+  if (isFavourite) {
+    $(".add-favourites").hide();
+  }
+
+  if (!isFavourite) {
+    $(".remove-favourites").hide();
+  }
+
+  $(".add-favourites").click(function () {
+    var postId = " <?php echo get_the_ID(); ?>";
+    $.ajax({
+      method: "POST",
+      url: "/wp-json/favourites/v1/add-favourites",
+      data: {
+        postId: postId
+      }
+    }).done(function (response) {
+      console.log(response);
+    });
+  });
+  $(".remove-favourites").click(function () {
+    var postId = " <?php echo get_the_ID(); ?>";
+    $.ajax({
+      method: "POST",
+      url: "/wp-json/favourites/v1/remove-favourites",
+      data: {
+        postId: postId
+      }
+    }).done(function (response) {
+      console.log(response);
+    });
+  });
+})(jQuery);
 
 /***/ }),
 

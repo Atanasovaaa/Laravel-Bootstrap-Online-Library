@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="container">
     <table class="table">
         <thead>
@@ -13,7 +12,6 @@
         </thead>
         <tbody>
             @foreach($books as $book)
-            @if(count($book->genres) > 0)
             <tr>
                 <td scope="row">
                     <a href="{{ route('books.show', ['book' => $book]) }}">{{$book->name}}</a>
@@ -23,13 +21,9 @@
                     <a href="{{ route('authors.show', ['author' => $book->author]) }}">{{$book->author->name}}</a>
                 </td>
                 <td>
-                    @foreach($book->genres as $b => $genre)
-                    <a href="{{ route('genres.show', ['genre'=> $genre]) }}">{{$genre->name}},</a>
-                    {{-- <span>{{$genre->name}},</span> --}}
-                    @endforeach
+                    {{$book->genre->name}}
                 </td>
             </tr>
-            @endif
             @endforeach
         </tbody>
 
