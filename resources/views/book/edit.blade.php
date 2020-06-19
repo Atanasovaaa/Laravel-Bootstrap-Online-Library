@@ -17,15 +17,15 @@
                 <div class="card-header">{{ __('Edit Book') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('books.edit', $book->id) }}">
+                    <form method="POST" action="{{ route('books.update', $book) }}">
                         @csrf
-                        @method('PUT')
+                        @method('PATCH')
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Book Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $book->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -39,7 +39,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="email"></textarea>
+                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="email">{{ $book->description }}</textarea>
 
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                                 <select class="custom-select" name="genre" id="genres">
                                     @foreach($genres as $key => $genre)
 
-                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                    <option value="{{$genre->id}}" {{$book->genre->id == $genre->id ? 'selected' : ''}}>{{$genre->name}} </option>
 
                                     @endforeach
                                 </select>
@@ -69,7 +69,7 @@
                                 <select class="custom-select" name="author" id="author">
                                     @foreach($authors as $key => $author)
 
-                                    <option value="{{$author->id}}">{{$author->name}}</option>
+                                    <option value="{{$author->id}}" {{$book->author->id == $author->id ? 'selected' : ''}}>{{$author->name}} </option>
 
                                     @endforeach
                                 </select>

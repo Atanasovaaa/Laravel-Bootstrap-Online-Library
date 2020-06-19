@@ -88,24 +88,4 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-{{-- <div class="container">
-    <form>
-        <div class="form-group">
-            <label for="bookName">Book Name</label>
-            <input type="text" class="form-control" id="bookName" placeholder="Book Name ">
-        </div>
-    </form>
-</div> --}}
-
 @endsection

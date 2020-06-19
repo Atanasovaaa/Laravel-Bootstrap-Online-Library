@@ -70,7 +70,7 @@ class BookController extends Controller
         $book->author_id = $request->input('author');
         $book->save();
 
-        return redirect()->back()->with('success', 'The Book was create successfully!');
+        return redirect()->route('admin.dashboard')->with('success', 'The Book was create successfully!');
     }
 
     /**
@@ -94,7 +94,16 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('book.edit',compact('books'));
+        $genres = Genre::all();
+        $authors = Author::all();
+        $bookEdit = Book::with(['author', 'genre'])->find($book->id);
+        // dd($bookEdit);
+
+        return view('book.edit', [
+            'genres' => $genres,
+            'authors' => $authors,
+            'book' => $bookEdit
+        ]);
     }
 
     /**
@@ -112,11 +121,17 @@ class BookController extends Controller
             'author' => 'required',
             'genre' => 'required'
         ]);
-  
-        $book->update($request->all());
-  
-        return redirect()->back()
-                        ->with('success','Product updated successfully');
+        // dd($request->all());
+
+        $book->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'author_id' => $request->input('author'),
+            'genre_id' => $request->input('genre')
+        ]);
+
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Book updated successfully');
     }
 
     /**
