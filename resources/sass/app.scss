@@ -152,7 +152,7 @@ p {
 //Button heart for favourites
 .btn-fav {
     text-align: center;
-    padding-top: 20px;
+    padding: 10px 0 5px 0;
     cursor: pointer;
 
     .fa-heart {
@@ -224,12 +224,16 @@ p {
         span {
             background-color: #38c172 !important;
             border-color: #38c172 !important;
+            color: #fff;
         }
     }
 
+    button {
+        color: #38c172;
+    }
     @media (max-width: 767.98px) {
         button {
-            background-color: #38c172;
+            background-color: #38c172 !important;
             color: #fff !important;
         }
     }

@@ -11086,7 +11086,7 @@ p {
 
 .btn-fav {
   text-align: center;
-  padding-top: 20px;
+  padding: 10px 0 5px 0;
   cursor: pointer;
 }
 
@@ -11147,11 +11147,16 @@ p {
 .pagination-blocks .active span {
   background-color: #38c172 !important;
   border-color: #38c172 !important;
+  color: #fff;
+}
+
+.pagination-blocks button {
+  color: #38c172;
 }
 
 @media (max-width: 767.98px) {
   .pagination-blocks button {
-    background-color: #38c172;
+    background-color: #38c172 !important;
     color: #fff !important;
   }
 }

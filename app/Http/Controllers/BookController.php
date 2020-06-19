@@ -32,7 +32,7 @@ class BookController extends Controller
     public function index()
     {
         $user = User::with('favs')->find(Auth::user()->id);
-        $books = Book::with('genre')->get();
+        $books = Book::with('genre')->paginate(12);
 
         return view('book.show', compact('books', 'user'));
     }

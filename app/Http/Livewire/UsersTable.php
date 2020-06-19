@@ -8,10 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-
-class DashboardTable extends Component
+class UsersTable extends Component
 {
-
     use WithPagination;
 
     public $pagination = 10;
@@ -19,8 +17,11 @@ class DashboardTable extends Component
 
     public function render()
     {
-        return view('livewire.dashboard-table', [
-            'books' => Book::orderBy('created_at', 'desc')->where('name', 'like',  "%$this->search%")->paginate($this->pagination)
+        $user = User::with('favs')->find(Auth::user()->id);
+
+        return view('livewire.users-table', [
+            'books' => Book::orderBy('created_at', 'desc')->where('name', 'like',  "%$this->search%")->paginate($this->pagination),
+            'user' => $user
         ]);
     }
 

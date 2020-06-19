@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         factory(User::class, 5)->create();
         factory(Author::class, 10)->create();
         factory(Genre::class, 8)->create();
-        factory(Book::class, 50)->create();
+        factory(Book::class, 200)->create();
     }
 }
