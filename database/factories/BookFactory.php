@@ -4,10 +4,14 @@
 
 use App\Book;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
+
 
 $factory->define(Book::class, function (Faker $faker) {
+    $bookName = $faker->name();
     return [
-        'name' => $faker->name(),
+        'name' => $bookName,
+        'slug' => Str::slug($bookName, '-'),
         'description' => $faker->realText($faker->numberBetween(50, 100)),
         'image_url' => $faker->imageUrl(150, 80),
         'author_id' => $faker->randomDigitNotNull(),

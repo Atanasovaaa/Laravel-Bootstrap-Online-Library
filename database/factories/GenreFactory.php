@@ -4,19 +4,24 @@
 
 use App\Genre;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
+
 
 $factory->define(Genre::class, function (Faker $faker) {
 
+    $genre = $faker->unique()->randomElement([
+        'Biography',
+        'Fantasy',
+        'Fiction',
+        'Historical Fiction',
+        'Humor and Comedy',
+        'Mystery',
+        'Novels',
+        'Thirller'
+    ]);
+
     return [
-        'name' => $faker->unique()->randomElement([
-            'Biography',
-            'Fantasy',
-            'Fiction',
-            'Historical Fiction',
-            'Humor and Comedy',
-            'Mystery',
-            'Novels',
-            'Thirller'
-        ])
+        'name' => $genre,
+        'slug' => Str::slug($genre, '-'),
     ];
 });

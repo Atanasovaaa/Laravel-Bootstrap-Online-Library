@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -50,6 +51,10 @@
                         @endif
                         @else
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
                         @if(Auth::user()->isAdmin)
                         <li class="nav-item">
                             <a class="nav-link" href="/admin-dashboard">Dashboard</a>
@@ -57,10 +62,19 @@
                         @endif
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('books.index')}}">Books</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Genres
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @foreach($genres as $genre)
+                                    <a class="dropdown-item" href="{{ route('genres.show', ['genre' => $genre])}}">{{$genre->name}}</a>
+                                    @endforeach
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('book.favourites')}}">Favourite Books</a>
@@ -91,10 +105,13 @@
             </div>
         </nav>
         @yield('hero')
+        @yield('hero-books')
+        @yield('hero-fav-books')
         <main class="py-4">
             @yield('content')
         </main>
     </div>
     @yield('extra-js')
+    @livewireScripts
 </body>
 </html>

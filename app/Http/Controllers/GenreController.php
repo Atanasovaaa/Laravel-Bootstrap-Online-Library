@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Genre;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GenreController extends Controller
 {
@@ -46,8 +49,12 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        return view("genre.index", [
-            'genre' => $genre
+        $user = User::with('favs')->find(Auth::user()->id);
+        $books = Book::where('genre_id', $genre->id)->get();
+        return view("genre.show", [
+            'books' => $books,
+            'user' => $user,
+            'genre' => $genre->name
         ]);
     }
 

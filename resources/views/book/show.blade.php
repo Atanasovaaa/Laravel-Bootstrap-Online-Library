@@ -16,13 +16,16 @@
                     </div>
                     <div class="col-md-8 d-block">
                         <div class="card-body">
-                            <h5 class="card-title">{{$book->name}}</h5>
+                            <a href="{{ route('books.show', ['book' => $book]) }}">
+                                <h5 class="card-title">{{$book->name}}</h5>
+                            </a>
                             <p class="card-text">{{$book->description}}</p>
                         </div>
-                        <div class="card-footer  align-bottom">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
+
                     </div>
+                </div>
+                <div class="card-footer  align-bottom">
+                    <small class="text-muted">Last updated 3 mins ago</small>
                 </div>
             </div>
         </div>
@@ -31,6 +34,16 @@
 </div>
 @endsection
 
+@section('hero-books')
+<div class="jumbotron jumbotron-fluid hero-books">
+    <div class="container">
+        <h2 class="display-4">ALL BOOKS
+        </h2>
+        <hr>
+        <p class="lead">“Books are a uniquely portable magic.” – Stephen King</p>
+    </div>
+</div>
+@endsection
 
 @section('extra-js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

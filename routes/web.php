@@ -25,6 +25,8 @@ Route::resources([
     'genres' => 'GenreController'
 ]);
 
+Route::get('/books/{book:slug}', 'BookController@show')->name('books.show')->middleware('auth');
+Route::get('/genres/{genre:slug}', 'GenreController@show')->name('genres.show')->middleware('auth');
 
 Auth::routes();
 

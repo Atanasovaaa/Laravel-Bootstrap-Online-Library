@@ -10974,11 +10974,11 @@ p {
   background-image: url("/images/light-hands-woman-books-34084.jpg");
   background-size: cover;
   color: #ffffff;
-  min-height: 500px;
+  min-height: 400px;
   position: relative;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
 }
 
 .jumbotron .container {
@@ -11027,6 +11027,63 @@ p {
   border-width: 2px;
 }
 
+.hero-books {
+  background-image: url("/images/brown-book-page-1112048.jpg");
+  background-size: cover;
+  color: #ffffff;
+  min-height: 400px;
+  position: relative;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.hero-books .container {
+  padding-top: 80px;
+}
+
+.hero-books .container h2 {
+  font-size: 2.8rem;
+}
+
+.hero-books .container p {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .hero-books .container {
+    padding-top: 70px;
+  }
+
+  .hero-books .container h2 {
+    font-size: 2.38rem;
+  }
+
+  .hero-books .container p {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767.98px) {
+  .hero-books .container {
+    padding-top: 60px;
+  }
+
+  .hero-books .container h2 {
+    font-size: 2rem;
+  }
+
+  .hero-books .container p {
+    font-size: 1rem;
+  }
+}
+
+.hero-books hr {
+  background-color: #61ce70;
+  border-width: 2px;
+}
+
 .btn-fav {
   text-align: center;
   padding-top: 20px;
@@ -11059,5 +11116,43 @@ p {
 .btn-create:hover {
   background-color: #28a745;
   border-color: #28a745;
+}
+
+.card-body a {
+  color: #343a40;
+  text-decoration: none;
+}
+
+.card-body a:hover {
+  color: #28a745;
+}
+
+.book-name a {
+  color: #343a40;
+  text-decoration: none;
+}
+
+.book-name a:hover {
+  color: #28a745;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.pagination-blocks ul {
+  justify-content: center !important;
+}
+
+.pagination-blocks .active span {
+  background-color: #38c172 !important;
+  border-color: #38c172 !important;
+}
+
+@media (max-width: 767.98px) {
+  .pagination-blocks button {
+    background-color: #38c172;
+    color: #fff !important;
+  }
 }
 
