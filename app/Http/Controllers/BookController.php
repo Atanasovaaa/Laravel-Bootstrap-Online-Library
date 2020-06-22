@@ -34,7 +34,7 @@ class BookController extends Controller
         $user = User::with('favs')->find(Auth::user()->id);
         $books = Book::with('genre')->paginate(12);
 
-        return view('book.show', compact('books', 'user'));
+        return view('book.index', compact('books', 'user'));
     }
 
     /**
@@ -81,7 +81,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view("book.index", [
+        return view("book.show", [
             'book' => $book
         ]);
     }

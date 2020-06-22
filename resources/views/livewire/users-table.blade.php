@@ -1,10 +1,17 @@
 <div>
-    <div class="search">
-        <div class="col-lg-5 col-md-4 col-sm-12 my-2">
+    <h2 class="text-center">Search</h2>
+    <div class="col-12 search d-sm-block d-md-inline-flex d-lg-inline-flex d-xl-inline-flex text-center pb-5">
+        <div class="col-lg-8 col-md-8 col-sm-12 my-2">
             <input type="text" class="form-control" placeholder="Search Book By Name" wire:model='search'>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-12 my-2">
             <button class="btn btn-danger w-100" wire:click='clearSearch'>Clear</button>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 my-4 my-md-2"><select class="custom-select" wire:model='pagination' id="">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
         </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">

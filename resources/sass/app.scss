@@ -23,7 +23,12 @@ p {
 .navbar-brand {
     font-family: "Libre Baskerville", serif;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+}
+#app {
+    .bg-dark {
+        background-color: #333 !important;
+    }
 }
 
 .author-img {
@@ -235,6 +240,40 @@ p {
         button {
             background-color: #38c172 !important;
             color: #fff !important;
+        }
+    }
+}
+
+footer {
+    background: linear-gradient(#333, #5b5b5b);
+}
+
+.footer-menu {
+    .row {
+        width: 100%;
+    }
+
+    hr {
+        text-align: center;
+        width: 75%;
+        border-color: #cecece;
+    }
+
+    h3,
+    a {
+        color: #cecece;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+        h3 {
+            margin: 25px 0 5px 0;
+        }
+    }
+
+    .social-wrapper {
+        .fa {
+            color: #cecece;
         }
     }
 }

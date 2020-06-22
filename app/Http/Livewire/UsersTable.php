@@ -14,13 +14,25 @@ class UsersTable extends Component
 
     public $pagination = 10;
     public $search = '';
+    public $genre;
+
+
+    public function mount($genre = null)
+    {
+        // dd($genre->id);
+        $this->genre = $genre;
+    }
 
     public function render()
     {
         $user = User::with('favs')->find(Auth::user()->id);
+        $query = Book::orderBy('created_at', 'desc')->where('name', 'like',  "%$this->search%");
+        if ($this->genre != null) {
+            $query->where('genre_id', $this->genre->id);
+        }
 
         return view('livewire.users-table', [
-            'books' => Book::orderBy('created_at', 'desc')->where('name', 'like',  "%$this->search%")->paginate($this->pagination),
+            'books' => $query->paginate($this->pagination),
             'user' => $user
         ]);
     }

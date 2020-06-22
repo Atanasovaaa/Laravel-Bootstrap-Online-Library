@@ -3,27 +3,52 @@
 @section('content')
 
 <div class="container">
-    <h2 class="text-center pb-3">{{$book->name}}</h2>
-    <div class="card">
-        <div class="row no-gutters">
-            <div class="col-auto">
-                <img src="{{ asset('images/throne=of-glass.jpg') }}" class="img-fluid" alt="">
-            </div>
-            <div class="col d-flex  p-4">
-                <div class="col-8 card-block">
-                    <h3>Description</h3>
-                    <p class="card-text ">{{$book->description}}</p>
-                    {{-- <a href="#" class="btn btn-primary">BUTTON</a> --}}
-                </div>
-                <div class="col-4 card-block">
-                    <h3>Author</h3>
-                    <p>{{$book->author->name}}</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer w-100 text-muted">
-            Last updated 3 mins ago </div>
+    <livewire:users-table />
+</div>
+@endsection
+
+@section('hero-books')
+<div class="jumbotron jumbotron-fluid hero-books">
+    <div class="container">
+        <h2 class="display-4">ALL BOOKS
+        </h2>
+        <hr>
+        <p class="lead">“Books are a uniquely portable magic.” – Stephen King</p>
     </div>
 </div>
+@endsection
 
+@section('extra-js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.btn-fav i').hover(function() {
+            $(this).toggleClass("fa-heart fa-heart-o");
+        });
+
+        $('.btn-fav i').click(function() {
+
+
+            var payload = {
+                id: $(this).attr("aria-data")
+            };
+
+            var data = new FormData();
+            data.append("data", JSON.stringify(payload));
+
+            fetch('/book/favouriteToggle', {
+                    method: "POST"
+                    , body: data
+                    , headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+                .then(function(res) {
+                    location.reload();
+                })
+                .then(function(data) {})
+        });
+    });
+
+</script>
 @endsection

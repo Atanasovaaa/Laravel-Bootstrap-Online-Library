@@ -49,12 +49,8 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        $user = User::with('favs')->find(Auth::user()->id);
-        $books = Book::where('genre_id', $genre->id)->get();
         return view("genre.show", [
-            'books' => $books,
-            'user' => $user,
-            'genre' => $genre->name
+            'genre' => $genre
         ]);
     }
 
