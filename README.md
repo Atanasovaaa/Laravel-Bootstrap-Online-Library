@@ -13,3 +13,8 @@
 5. npm run dev
 6. Create database with name "library"
 7. run "php artisan migrate --seed"
+
+# For Login
+
+1. Влезте в създадената база данни и в таблица users използвайте един от въведените имейли
+2. Паролата за всички юзъри е "password"
