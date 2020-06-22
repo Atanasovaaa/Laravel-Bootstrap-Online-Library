@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GenreController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->middleware('auth');
+Route::get('/', 'HomeController@index');
 Route::get('/admin-dashboard', 'AdminController@index')->name('admin.dashboard');
 Route::get('/favourites', 'BookController@favourites')->name('book.favourites')->middleware('auth');
 Route::post('/book/favouriteToggle', 'BookController@toggleFavourites')->name('book.toggleFavourites')->middleware('auth');

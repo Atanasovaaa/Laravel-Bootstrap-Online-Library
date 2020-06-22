@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Book;
 use App\Genre;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Pagination\Paginator as PaginationPaginator;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,5 +34,6 @@ class AppServiceProvider extends ServiceProvider
         FacadesView::composer('*', function ($view) {
             $view->with('latestBooks', Book::orderBy('created_at', 'desc')->take(8)->get());
         });
+        PaginationPaginator::defaultView('includes.pagination');
     }
 }

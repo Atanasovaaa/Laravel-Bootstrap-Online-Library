@@ -15,7 +15,6 @@ class AdminController extends Controller
 
     public function index()
     {
-        // $books = Book::orderBy('created_at', 'desc')->get();
         return view('admin.index');
     }
 }

@@ -19,7 +19,6 @@ class UsersTable extends Component
 
     public function mount($genre = null)
     {
-        // dd($genre->id);
         $this->genre = $genre;
     }
 

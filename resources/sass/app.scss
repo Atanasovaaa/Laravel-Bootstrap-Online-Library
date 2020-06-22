@@ -233,17 +233,20 @@ p {
         }
     }
 
-    button {
+    button,
+    a {
         color: #38c172;
     }
     @media (max-width: 767.98px) {
-        button {
+        button,
+        a {
             background-color: #38c172 !important;
             color: #fff !important;
         }
     }
 }
 
+// Footer
 footer {
     background: linear-gradient(#333, #5b5b5b);
 }

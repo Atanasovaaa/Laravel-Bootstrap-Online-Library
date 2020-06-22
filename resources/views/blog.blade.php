@@ -31,6 +31,15 @@
 
         </table>
     </div>
+    <div class="col-12 d-sm-block d-md-block d-lg-inline-flex d-xl-inline-flex py-4">
+        <div class="col-lg-4 col-md-12 col-sm-12 "></div>
+        <div class="col-lg-4 col-md-12 col-sm-12 pagination-blocks">
+            {{ $books->links() }}
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 text-center pt-1">
+            Showing {{ $books->firstItem() }} to {{ $books->lastItem() }} out of {{ $books->total() }}
+        </div>
+    </div>
 </div>
 
 @endsection

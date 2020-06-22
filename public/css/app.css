@@ -11154,12 +11154,14 @@ p {
   color: #fff;
 }
 
-.pagination-blocks button {
+.pagination-blocks button,
+.pagination-blocks a {
   color: #38c172;
 }
 
 @media (max-width: 767.98px) {
-  .pagination-blocks button {
+  .pagination-blocks button,
+  .pagination-blocks a {
     background-color: #38c172 !important;
     color: #fff !important;
   }

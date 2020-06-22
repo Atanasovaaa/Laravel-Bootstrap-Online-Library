@@ -97,7 +97,6 @@ class BookController extends Controller
         $genres = Genre::all();
         $authors = Author::all();
         $bookEdit = Book::with(['author', 'genre'])->find($book->id);
-        // dd($bookEdit);
 
         return view('book.edit', [
             'genres' => $genres,
@@ -121,7 +120,6 @@ class BookController extends Controller
             'author' => 'required',
             'genre' => 'required'
         ]);
-        // dd($request->all());
 
         $book->update([
             'name' => $request->input('name'),
@@ -176,10 +174,6 @@ class BookController extends Controller
             }
 
             $user->save();
-
-            // $book = Book::find($data->id);
-            // $book->isFavourite = !$book->isFavourite;
-            // $book->save();
 
             return response('200');
         }
