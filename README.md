@@ -1,8 +1,8 @@
-#Requirements
+# Requirements
+
 1. PHP version 7.4
 2. Composer -> https://getcomposer.org/download/
 3. Node(v12) & npm(6.13)
-
 
 # Run Application
 
