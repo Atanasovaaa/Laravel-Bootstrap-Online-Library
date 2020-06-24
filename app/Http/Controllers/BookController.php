@@ -9,6 +9,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
+
 
 use function GuzzleHttp\Promise\all;
 
@@ -64,13 +66,14 @@ class BookController extends Controller
 
         $book = new Book();
         $book->name = $request->input('name');
+        $book->slug = Str::slug($book->name, '-');
         $book->description = $request->input('description');
         $book->isFavourite = false;
         $book->genre_id = $request->input('genre');
         $book->author_id = $request->input('author');
         $book->save();
 
-        return redirect()->route('admin.dashboard')->with('success', 'The Book was create successfully!');
+        return redirect()->route('admin.dashboard')->with('success', 'Book was create successfully!');
     }
 
     /**
@@ -128,8 +131,11 @@ class BookController extends Controller
             'genre_id' => $request->input('genre')
         ]);
 
+        $book->slug = Str::slug($request->name, '-');
+        $book->save();
+
         return redirect()->route('admin.dashboard')
-            ->with('success', 'Book updated successfully');
+            ->with('success', 'Book was successfully updated.');
     }
 
     /**
@@ -144,7 +150,8 @@ class BookController extends Controller
         $tempBook->favs()->detach();
         $tempBook->delete();
 
-        return response('200');
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Book was successfully deleted.');
     }
 
 
