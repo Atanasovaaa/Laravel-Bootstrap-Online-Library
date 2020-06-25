@@ -12,7 +12,7 @@ class UsersTable extends Component
 {
     use WithPagination;
 
-    public $pagination = 10;
+    public $pagination = 12;
     public $search = '';
     public $genre;
 
@@ -20,6 +20,11 @@ class UsersTable extends Component
     public function mount($genre = null)
     {
         $this->genre = $genre;
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function render()

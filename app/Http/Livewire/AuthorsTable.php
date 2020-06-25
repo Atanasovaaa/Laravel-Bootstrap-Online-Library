@@ -2,19 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Book;
-use App\User;
-use Illuminate\Support\Facades\Auth;
+use App\Author;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 
-class DashboardTable extends Component
+class AuthorsTable extends Component
 {
-
     use WithPagination;
 
-    public $pagination = 12;
+    public $pagination = 5;
     public $search = '';
 
     public function updatingSearch()
@@ -24,11 +21,10 @@ class DashboardTable extends Component
 
     public function render()
     {
-        return view('livewire.dashboard-table', [
-            'books' => Book::orderBy('created_at', 'desc')->where('name', 'like',  "%$this->search%")->paginate($this->pagination)
+        return view('livewire.authors-table', [
+            'authors' => Author::orderBy('name', 'asc')->where('name', 'like',  "%$this->search%")->paginate($this->pagination)
         ]);
     }
-
     public function clearSearch()
     {
         $this->search = '';

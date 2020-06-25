@@ -11131,12 +11131,16 @@ p {
   color: #28a745;
 }
 
-.book-name a {
+.book-name a,
+.author-name a,
+.genre-name a {
   color: #343a40;
   text-decoration: none;
 }
 
-.book-name a:hover {
+.book-name a:hover,
+.author-name a:hover,
+.genre-name a:hover {
   color: #28a745;
 }
 

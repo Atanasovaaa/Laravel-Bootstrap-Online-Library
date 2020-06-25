@@ -18,12 +18,11 @@
                         <a href="{{ route('books.show', ['book' => $book]) }}">{{$book->name}}</a>
                     </td>
                     <td>{{$book->description}}</td>
-                    <td>
-                        {{-- <a href="{{ route('authors.show', ['author' => $book->author]) }}">{{$book->author->name}}</a> --}}
-                        {{$book->author->name}}
+                    <td class="author-name">
+                        <a href="{{ route('authors.show', ['author' => $book->author]) }}">{{$book->author->name}}</a>
                     </td>
-                    <td>
-                        {{$book->genre->name}}
+                    <td class="genre-name">
+                        <a href="{{route('genres.show', ['genre' => $book->genre->slug])}}">{{$book->genre->name}}</a>
                     </td>
                 </tr>
                 @endforeach

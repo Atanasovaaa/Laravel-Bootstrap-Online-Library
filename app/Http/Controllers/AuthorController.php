@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Book;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -20,7 +21,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::all();
+
+        return view('author.index', compact('authors'));
     }
 
     /**
@@ -52,10 +55,9 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
+        $books = Book::where('author_id', $author->id)->orderBy('name', 'asc')->get();
 
-        return view("author.index", [
-            'author' => $author
-        ]);
+        return view('author.show', compact('author', 'books'));
     }
 
     /**

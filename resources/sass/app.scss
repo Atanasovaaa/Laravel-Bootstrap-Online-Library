@@ -202,7 +202,9 @@ p {
 }
 
 //Book title style
-.book-name {
+.book-name,
+.author-name,
+.genre-name {
     a {
         color: #343a40;
         text-decoration: none;
