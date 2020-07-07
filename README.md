@@ -16,5 +16,6 @@
 
 ### For Login
 
-1. Влезте в създадената база данни и в таблица users използвайте един от въведените имейли
-2. Паролата за всички юзъри е "password"
+1. Влезте в създадената база данни и в таблица users използвайте един от въведените имейли / 
+Log in to the created database and use one of the entered emails in the 'users' table
+2. Паролата за всички юзъри е "password" / The password for all users is "password"
